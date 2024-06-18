@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "50d16666-28ca-47be-a95a-cc3e7197a4b1",
+		"name": "Чуркина Анастасия Сергеевна ТЗ AgentApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33323351"
+	},
+	"item": [
+		{
+			"name": "Аутентификация",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "qa@qa.qa",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://partner.agentapp.ru/v1/users/obtain-token"
+			},
+			"response": []
+		},
+		{
+			"name": "Создание водителя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"Евгений\",\r\n  \"last_name\": \"Комаровский\",\r\n  \"patronymic\": \"Олегович\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"driving_experience_started\": \"2010-10-10\",\r\n  \"driver_licenses\": [\r\n    {\r\n      \"credential_type\": \"DRIVER_LICENSE\",\r\n      \"number\": \"012345\",\r\n      \"series\": \"1234\",\r\n      \"issue_date\": \"2010-10-10\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v1/insured_objects/drivers"
+			},
+			"response": []
+		},
+		{
+			"name": "Создание собственника",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"last_name\": \"Фамилия\",\r\n  \"first_name\": \"Имя\",\r\n  \"patronymic\": \"Отчество\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"credential\": [\r\n    {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2017-03-08\",\r\n      \"issue_point\": \"УФМС\",\r\n      \"issue_point_code\": \"123-456\",\r\n      \"number\": \"123456\",\r\n      \"series\": \"1234\"\r\n    }\r\n  ],\r\n  \"address\": [\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v1/insured_objects/owners/natural_persons"
+			},
+			"response": []
+		},
+		{
+			"name": "Создание страхователя",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"last_name\": \"Фамилия\",\r\n  \"first_name\": \"Имя\",\r\n  \"patronymic\": \"Отчество\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"credential\": [\r\n    {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2010-10-10\",\r\n      \"issue_point\": \"УФМС\",\r\n      \"issue_point_code\": \"123-456\",\r\n      \"number\": \"123456\",\r\n      \"series\": \"1234\"\r\n    }\r\n  ],\r\n  \"address\": [\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v1/insured_objects/insurants/natural_persons"
+			},
+			"response": []
+		},
+		{
+			"name": "Создание автомобиля",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"car_model_id\":\"864026180\",\r\n\"engine_power\": \"211\",\r\n\"vin_number\": \"WAUZZZ8T4BA037241\",\r\n\"number_plate\": \"Р904МХ178\",\r\n\"manufacturing_year\": \"2010\",\r\n\"max_mass\": \"0\",\r\n\"has_trailer\": \"false\",\r\n\"credential\":[\r\n  {\r\n\"credential_type\": \"VEHICLE_REGISTRATION\",\r\n\"issue_date\": \"2010-11-01\",\r\n\"number\": \"267461\",\r\n\"series\": \"78УН\"\r\n  }\r\n ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v3/insured_objects/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "Объединение субъектов и объектов страхования в одну сущность “объект страхования”",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"drivers\": [\r\n\"b0c38653-8401-498f-9f08-98d1a8a91701\"\r\n    ],\r\n    \"owner\":\"a73fdfef-eb94-4a6c-9f8c-ca1e57d9325e\",\r\n    \"car\": \"5ed61684-be98-4023-9e89-5bffcf3d7968\",\r\n    \"insurant\": \"4a0cab9f-f535-40ee-aae2-4f05ea93f48f\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v1/insured_objects/"
+			},
+			"response": []
+		},
+		{
+			"name": "Создание договора",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"valid_from\": \"2024-06-30\",\r\n  \"valid_to\": \"2026-06-29\",\r\n  \"insurance_period\": 8,\r\n  \"target_of_using\": 11,\r\n  \"drivers_ids\": [\"9aa67727-3f25-4601-9b01-5330bd0a3fcd\"],\r\n  \"is_car_without_registration\": false,\r\n  \"engine_power\": 110,\r\n  \"has_car_trailer\": false,\r\n  \"car_type\": \"B\",\r\n  \"owner_registration\":   {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7000000000000\",\r\n      \"city_kladr_id\": \"7000000100000\"\r\n    },\r\n  \"periods\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v3/agreements/calculations"
+			},
+			"response": []
+		},
+		{
+			"name": "Обновление Договора в системе AgentApp",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v3/agreements/f75dbbfb-5234-4eb1-a34c-8754185fdecf"
+			},
+			"response": []
+		},
+		{
+			"name": "Получение полного расчёт по СК",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"maxRedirects": 10
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "111",
+						"username": "qa@qa.qa"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "agreement_id",
+						"value": "bcd21c53-af59-4c40-9b1d-1f46fbcab65e",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "ins_company_cod",
+						"value": "TEST_COMPANY",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"agreement_id\" : \"f75dbbfb-5234-4eb1-a34c-8754185fdecf\",\r\n\"ins_company_code\" : \"TEST_COMPANY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://partner.agentapp.ru/v3/agreements/f75dbbfb-5234-4eb1-a34c-8754185fdecf/results/TEST_COMPANY"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
